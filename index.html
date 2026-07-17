@@ -1,0 +1,1416 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lwazi Vivian Dlamini | Multimedia Portfolio</title>
+  <style>
+    :root {
+      --bg: #050609;
+      --panel: rgba(15, 18, 23, 0.78);
+      --panel-strong: rgba(20, 24, 31, 0.94);
+      --line: rgba(255, 255, 255, 0.11);
+      --text: #f4f7f5;
+      --muted: #a7afb0;
+      --soft: #697174;
+      --green: #00e36d;
+      --green-soft: rgba(0, 227, 109, 0.16);
+      --pink: #ff4ea3;
+      --blue: #4c8dff;
+      --amber: #ffb13d;
+      --radius: 8px;
+      --shadow: 0 24px 70px rgba(0, 0, 0, 0.42);
+      --max: 1460px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at 78% 18%, rgba(0, 227, 109, 0.11), transparent 26%),
+        radial-gradient(circle at 24% 74%, rgba(76, 141, 255, 0.10), transparent 24%),
+        linear-gradient(135deg, #050609 0%, #080a0f 52%, #030405 100%);
+      color: var(--text);
+      font-family: Inter, "Segoe UI", Arial, sans-serif;
+      letter-spacing: 0;
+      line-height: 1.6;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px);
+      background-size: 88px 88px;
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,0.9), transparent 78%);
+      z-index: -1;
+    }
+
+    img,
+    video {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input,
+    textarea,
+    select {
+      font: inherit;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      border-bottom: 1px solid var(--line);
+      background: rgba(5, 6, 9, 0.88);
+      backdrop-filter: blur(18px);
+    }
+
+    .nav {
+      width: min(var(--max), calc(100% - 56px));
+      min-height: 84px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 220px 1fr auto;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .brand {
+      font-weight: 900;
+      font-size: 18px;
+      line-height: 1.04;
+      text-transform: uppercase;
+    }
+
+    .brand span,
+    .dot {
+      color: var(--green);
+    }
+
+    .nav-links {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 36px;
+      text-transform: uppercase;
+      font-size: 13px;
+      font-weight: 750;
+      color: #dce2df;
+    }
+
+    .nav-links a {
+      position: relative;
+      padding: 30px 0;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: 21px;
+      width: 0;
+      height: 2px;
+      background: var(--green);
+      transform: translateX(-50%);
+      transition: width 180ms ease;
+    }
+
+    .nav-links a:hover::after,
+    .nav-links a:focus-visible::after {
+      width: 100%;
+    }
+
+    .cta,
+    .primary-btn,
+    .ghost-btn,
+    .filter,
+    .send-btn {
+      border: 1px solid rgba(0, 227, 109, 0.72);
+      background: transparent;
+      color: var(--text);
+      min-height: 46px;
+      padding: 0 22px;
+      border-radius: var(--radius);
+      font-weight: 850;
+      text-transform: uppercase;
+      font-size: 13px;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      cursor: pointer;
+    }
+
+    .cta::after,
+    .primary-btn::after,
+    .ghost-btn::after,
+    .send-btn::after {
+      content: "->";
+      color: var(--green);
+      font-weight: 900;
+      font-size: 18px;
+    }
+
+    .primary-btn,
+    .send-btn,
+    .filter.active {
+      background: var(--green);
+      color: #021008;
+      box-shadow: 0 18px 44px rgba(0, 227, 109, 0.24);
+    }
+
+    .primary-btn::after,
+    .send-btn::after {
+      color: #021008;
+    }
+
+    .menu-toggle {
+      display: none;
+      width: 46px;
+      height: 46px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--panel);
+      color: var(--text);
+      font-weight: 900;
+    }
+
+    section {
+      scroll-margin-top: 100px;
+    }
+
+    .section {
+      width: min(var(--max), calc(100% - 56px));
+      margin: 0 auto;
+      padding: 90px 0;
+    }
+
+    .hero {
+      width: min(var(--max), calc(100% - 56px));
+      min-height: calc(100vh - 84px);
+      margin: 0 auto;
+      padding: 68px 0 42px;
+      display: grid;
+      grid-template-columns: minmax(340px, 0.82fr) minmax(480px, 1.18fr);
+      gap: 56px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      margin: 0 0 14px;
+      color: var(--green);
+      font-size: 14px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
+    }
+
+    h1 {
+      margin-bottom: 22px;
+      max-width: 620px;
+      font-size: clamp(52px, 6vw, 104px);
+      line-height: 0.98;
+      text-transform: uppercase;
+      font-weight: 950;
+    }
+
+    h2 {
+      margin-bottom: 18px;
+      font-size: clamp(38px, 4vw, 68px);
+      line-height: 1.02;
+      text-transform: uppercase;
+      font-weight: 950;
+    }
+
+    .lead {
+      max-width: 560px;
+      color: #c8cfcd;
+      font-size: 18px;
+    }
+
+    .actions {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-top: 34px;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 38px;
+      max-width: 560px;
+    }
+
+    .stat {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.035);
+      padding: 22px;
+      min-height: 126px;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 34px;
+      line-height: 1;
+      margin: 12px 0 6px;
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .mini-icon {
+      width: 30px;
+      height: 30px;
+      border: 1px solid rgba(0, 227, 109, 0.56);
+      border-radius: 7px;
+      display: grid;
+      place-items: center;
+      color: var(--green);
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .media-stage {
+      position: relative;
+      min-height: 590px;
+    }
+
+    .hero-photo {
+      position: relative;
+      min-height: 590px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: linear-gradient(160deg, rgba(20,24,31,0.88), rgba(4,5,8,0.92));
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .hero-photo img {
+      width: 100%;
+      height: 100%;
+      min-height: 590px;
+      object-fit: cover;
+      object-position: center;
+      filter: saturate(1.05) contrast(1.04);
+    }
+
+    .hero-photo::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(to top, rgba(0, 0, 0, 0.36), transparent 46%),
+        radial-gradient(circle at 80% 18%, rgba(0, 227, 109, 0.16), transparent 32%);
+    }
+
+    .edit-suite {
+      position: absolute;
+      inset: 52px 80px 58px 28px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: linear-gradient(160deg, rgba(20,24,31,0.88), rgba(4,5,8,0.92));
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .edit-suite video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.72;
+      filter: saturate(1.1) contrast(1.08);
+    }
+
+    .edit-suite::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.76), transparent 52%);
+    }
+
+    .floating-card {
+      position: absolute;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(9, 11, 15, 0.86);
+      backdrop-filter: blur(14px);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .portrait-card {
+      width: 44%;
+      right: 0;
+      top: 0;
+    }
+
+    .portrait-card img {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+    }
+
+    .poster-card {
+      width: 32%;
+      right: 8%;
+      bottom: 34px;
+    }
+
+    .poster-card img {
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+    }
+
+    .audio-card {
+      left: 0;
+      bottom: 84px;
+      width: 310px;
+      padding: 18px;
+    }
+
+    .wave {
+      height: 54px;
+      margin-top: 12px;
+      background: repeating-linear-gradient(90deg, var(--green) 0 3px, transparent 3px 10px);
+      clip-path: polygon(0 52%, 4% 36%, 8% 70%, 12% 20%, 16% 62%, 20% 42%, 24% 76%, 28% 28%, 32% 54%, 36% 18%, 40% 64%, 44% 38%, 48% 80%, 52% 30%, 56% 58%, 60% 22%, 64% 66%, 68% 44%, 72% 78%, 76% 34%, 80% 54%, 84% 24%, 88% 70%, 92% 40%, 96% 64%, 100% 48%, 100% 100%, 0 100%);
+      opacity: 0.86;
+    }
+
+    .timeline-strip {
+      position: absolute;
+      left: 54px;
+      right: 116px;
+      bottom: 12px;
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(8, 10, 13, 0.9);
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 8px;
+    }
+
+    .timeline-strip img {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: 5px;
+      opacity: 0.8;
+    }
+
+    .selected-preview {
+      border-top: 1px solid var(--line);
+      padding-top: 34px;
+      margin-top: -34px;
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      align-items: end;
+      margin-bottom: 32px;
+    }
+
+    .section-head p {
+      max-width: 590px;
+      color: var(--muted);
+    }
+
+    .work-row {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .work-card,
+    .skill-card,
+    .panel,
+    .contact-card,
+    .experience-card,
+    .project-card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--panel);
+      box-shadow: 0 18px 44px rgba(0, 0, 0, 0.18);
+      overflow: hidden;
+    }
+
+    .work-card img,
+    .work-card video,
+    .project-card img,
+    .project-card video {
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      object-fit: cover;
+      background: #111;
+    }
+
+    .card-body {
+      padding: 18px;
+    }
+
+    .tag {
+      color: var(--green);
+      font-size: 11px;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .pink {
+      color: var(--pink);
+    }
+
+    .blue {
+      color: var(--blue);
+    }
+
+    .amber {
+      color: var(--amber);
+    }
+
+    .card-body h3 {
+      margin: 7px 0 3px;
+      font-size: 18px;
+      line-height: 1.25;
+    }
+
+    .card-body p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .skills-layout {
+      display: grid;
+      grid-template-columns: 0.85fr 1.45fr 0.9fr;
+      gap: 22px;
+    }
+
+    .panel {
+      padding: 22px;
+    }
+
+    .panel-title {
+      margin: 0 0 18px;
+      color: var(--green);
+      text-transform: uppercase;
+      font-size: 15px;
+      font-weight: 900;
+    }
+
+    .software-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .skill-card {
+      padding: 14px;
+      display: grid;
+      grid-template-columns: 54px 1fr auto;
+      align-items: center;
+      gap: 14px;
+      background: rgba(255,255,255,0.035);
+    }
+
+    .app-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: var(--radius);
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-size: 21px;
+      font-weight: 900;
+      background: linear-gradient(135deg, #261768, #13213d);
+    }
+
+    .skill-card:nth-child(2) .app-icon { background: linear-gradient(135deg, #2b1768, #32123f); }
+    .skill-card:nth-child(3) .app-icon { background: linear-gradient(135deg, #003b8f, #02192e); }
+    .skill-card:nth-child(4) .app-icon { background: linear-gradient(135deg, #7b3200, #261100); }
+    .skill-card:nth-child(5) .app-icon { background: linear-gradient(135deg, #8b0649, #240015); }
+    .skill-card:nth-child(6) .app-icon { background: linear-gradient(135deg, #007a72, #09231f); }
+
+    .bar {
+      height: 7px;
+      margin-top: 8px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.11);
+      overflow: hidden;
+    }
+
+    .bar span {
+      display: block;
+      height: 100%;
+      border-radius: inherit;
+      background: var(--green);
+    }
+
+    .workflow {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+      margin: 18px 0 30px;
+    }
+
+    .step {
+      position: relative;
+      text-align: center;
+      padding-top: 8px;
+    }
+
+    .step::before {
+      content: "";
+      display: block;
+      width: 54px;
+      height: 54px;
+      margin: 0 auto 12px;
+      border: 1px solid rgba(0, 227, 109, 0.45);
+      border-radius: 50%;
+      background: var(--green-soft);
+    }
+
+    .step strong {
+      display: block;
+      font-size: 13px;
+      color: var(--green);
+      margin-bottom: 4px;
+    }
+
+    .step span {
+      font-weight: 850;
+    }
+
+    .editor-panel {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 14px;
+      background: rgba(0,0,0,0.3);
+    }
+
+    .editor-thumbs {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .editor-thumbs img {
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: 5px;
+    }
+
+    .strength-list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .strength {
+      display: grid;
+      grid-template-columns: 44px 1fr;
+      gap: 13px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .strength:last-child {
+      border-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .strength h3 {
+      margin: 0 0 2px;
+      font-size: 16px;
+    }
+
+    .strength p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    .experience-layout {
+      display: grid;
+      grid-template-columns: 1fr 360px;
+      gap: 26px;
+      align-items: start;
+    }
+
+    .journey {
+      position: relative;
+      display: grid;
+      gap: 18px;
+      padding-left: 48px;
+    }
+
+    .journey::before {
+      content: "";
+      position: absolute;
+      left: 18px;
+      top: 8px;
+      bottom: 8px;
+      width: 2px;
+      background: linear-gradient(var(--green), rgba(0, 227, 109, 0.2));
+    }
+
+    .experience-card {
+      position: relative;
+      padding: 24px;
+      display: grid;
+      grid-template-columns: 170px 1fr;
+      gap: 22px;
+      background: var(--panel-strong);
+    }
+
+    .experience-card::before {
+      content: "";
+      position: absolute;
+      left: -38px;
+      top: 34px;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 0 8px rgba(0, 227, 109, 0.16);
+    }
+
+    .year {
+      color: var(--green);
+      font-size: 28px;
+      font-weight: 950;
+      line-height: 1;
+    }
+
+    .role {
+      color: var(--green);
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 16px;
+    }
+
+    .chip {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 7px 11px;
+      color: #dce3e1;
+      font-size: 12px;
+      background: rgba(255,255,255,0.035);
+    }
+
+.impact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .impact {
+      border: 1px solid var(--line);
+      padding: 18px;
+      border-radius: var(--radius);
+      background: rgba(255,255,255,0.035);
+    }
+
+    .impact strong {
+      display: block;
+      font-size: 29px;
+      line-height: 1;
+      margin-bottom: 7px;
+    }
+
+    .impact span {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .deliverables {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .deliverables span {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 12px;
+      color: #d7dedc;
+      background: rgba(255,255,255,0.035);
+      font-size: 13px;
+    }
+
+    .portfolio-layout {
+      display: grid;
+      grid-template-columns: 320px minmax(0, 1fr);
+      gap: 28px;
+    }
+
+    .portfolio-side {
+      position: sticky;
+      top: 112px;
+      align-self: start;
+      min-width: 0;
+    }
+
+    .portfolio-side h2 {
+      max-width: 100%;
+      font-size: clamp(30px, 2.55vw, 44px);
+      line-height: 1.06;
+      word-break: normal;
+      overflow-wrap: normal;
+    }
+
+    .filter-stack {
+      display: grid;
+      gap: 10px;
+      margin: 26px 0;
+    }
+
+    .filter {
+      width: 100%;
+      justify-content: space-between;
+      border-color: var(--line);
+      background: rgba(255,255,255,0.035);
+      text-align: left;
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .featured {
+      grid-column: span 2;
+      grid-row: span 2;
+    }
+
+    .featured video {
+      aspect-ratio: 16 / 10;
+    }
+
+    .featured .card-body {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 18px;
+    }
+
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 260px minmax(420px, 1fr) 360px 360px;
+      gap: 24px;
+      align-items: start;
+    }
+
+    .recent-list {
+      display: grid;
+      gap: 16px;
+    }
+
+    .recent-item {
+      display: grid;
+      grid-template-columns: 84px 1fr;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .recent-item img,
+    .recent-item video {
+      width: 84px;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+    }
+
+    .contact-form {
+      padding: 26px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    label {
+      display: grid;
+      gap: 8px;
+      color: #edf4f1;
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    input,
+    textarea,
+    select {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255,255,255,0.045);
+      color: var(--text);
+      padding: 14px;
+      outline: none;
+    }
+
+    textarea {
+      min-height: 138px;
+      resize: vertical;
+    }
+
+    .wide {
+      grid-column: 1 / -1;
+    }
+
+    .contact-stack {
+      display: grid;
+      gap: 14px;
+    }
+
+    .contact-card {
+      padding: 20px;
+      display: grid;
+      gap: 5px;
+    }
+
+    .contact-card small {
+      color: var(--green);
+      text-transform: uppercase;
+      font-weight: 900;
+    }
+
+    .contact-card strong {
+      word-break: break-word;
+    }
+
+    .portrait-panel {
+      position: relative;
+      min-height: 540px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: #08090d;
+    }
+
+    .portrait-panel img {
+      width: 100%;
+      height: 100%;
+      min-height: 540px;
+      object-fit: cover;
+      opacity: 0.82;
+    }
+
+    .portrait-panel::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.7), transparent 60%);
+    }
+
+    .audio-mini {
+      position: absolute;
+      left: 18px;
+      right: 18px;
+      bottom: 18px;
+      z-index: 1;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(0,0,0,0.72);
+    }
+
+    .footer-cta {
+      width: min(var(--max), calc(100% - 56px));
+      margin: 0 auto 52px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 34px;
+      background: var(--panel);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .footer-cta p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .site-footer {
+      border-top: 1px solid var(--line);
+      padding: 26px 0;
+      color: var(--soft);
+      text-align: center;
+      font-size: 13px;
+    }
+
+    @media (max-width: 1220px) {
+      .nav {
+        grid-template-columns: 180px 1fr auto;
+      }
+
+      .hero,
+      .skills-layout,
+      .experience-layout,
+      .portfolio-layout,
+      .contact-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .portfolio-side {
+        position: static;
+      }
+
+      .filter-stack {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .experience-card {
+        grid-template-columns: 140px 1fr;
+      }
+
+.contact-layout {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 840px) {
+      .nav {
+        width: min(100% - 34px, var(--max));
+        grid-template-columns: 1fr auto;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .nav .cta {
+        display: none;
+      }
+
+      .nav-links {
+        display: none;
+        grid-column: 1 / -1;
+        padding-bottom: 18px;
+        justify-content: start;
+        flex-wrap: wrap;
+        gap: 18px;
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .nav-links a {
+        padding: 8px 0;
+      }
+
+      .nav-links a::after {
+        bottom: 0;
+      }
+
+      .section,
+      .hero,
+      .footer-cta {
+        width: min(100% - 34px, var(--max));
+      }
+
+      .hero {
+        padding-top: 42px;
+      }
+
+      .stats,
+      .work-row,
+      .project-grid,
+      .workflow,
+      .filter-stack,
+      .contact-layout,
+      .form-grid,
+      .impact-grid,
+      .deliverables {
+        grid-template-columns: 1fr;
+      }
+
+      .media-stage {
+        min-height: 540px;
+      }
+
+      .portrait-card {
+        width: 56%;
+      }
+
+      .poster-card {
+        width: 48%;
+        right: 0;
+      }
+
+      .audio-card {
+        width: 78%;
+      }
+
+      .timeline-strip {
+        left: 18px;
+        right: 18px;
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .featured,
+      .wide {
+        grid-column: auto;
+      }
+
+      .experience-card {
+        grid-template-columns: 1fr;
+      }
+
+      .journey {
+        padding-left: 34px;
+      }
+
+      .footer-cta,
+      .section-head {
+        align-items: start;
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav" aria-label="Primary navigation">
+      <a href="#home" class="brand">Lwazi Vivian<br>Dlamini<span>.</span></a>
+      <div class="nav-links" id="navLinks">
+        <a href="#home">Home</a>
+        <a href="#professional">Professional</a>
+        <a href="#experience">Experience</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <a class="cta" href="#contact">Let's Work Together</a>
+      <button class="menu-toggle" type="button" aria-label="Toggle menu" aria-controls="navLinks" aria-expanded="false">Menu</button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div>
+        <p class="eyebrow">Multimedia Specialist</p>
+        <h1>Lwazi Vivian Dlamini<span class="dot">.</span></h1>
+        <p class="lead">I create engaging visual stories through video, motion design, campaigns, photography, and brand storytelling that drive impact and connection.</p>
+        <div class="actions">
+          <a class="primary-btn" href="#portfolio">View Portfolio</a>
+          <a class="ghost-btn" href="#contact">Contact Me</a>
+        </div>
+        <div class="stats" aria-label="Portfolio highlights">
+          <div class="stat"><div class="mini-icon">P</div><strong>24+</strong><span>Projects completed</span></div>
+          <div class="stat"><div class="mini-icon">V</div><strong>6+</strong><span>Video campaigns</span></div>
+          <div class="stat"><div class="mini-icon">M</div><strong>4+</strong><span>Motion projects</span></div>
+        </div>
+      </div>
+
+      <div class="hero-photo" aria-label="Lwazi Vivian Dlamini portrait">
+        <img src="assets/lwazi-cleaned.png" alt="Lwazi Vivian Dlamini">
+      </div>
+    </section>
+
+    <section class="section selected-preview" aria-label="Selected work preview">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Featured Work</p>
+          <h2>Selected Work<span class="dot">.</span></h2>
+        </div>
+        <a class="ghost-btn" href="#portfolio">View All Projects</a>
+      </div>
+      <div class="work-row">
+        <article class="work-card">
+          <video src="assets/golf ad.mp4" muted loop playsinline controls></video>
+          <div class="card-body"><span class="tag">Video</span><h3>The Perfect Drive</h3><p>Promotional video campaign</p></div>
+        </article>
+        <article class="work-card">
+          <img src="assets/Beneficiary Posts -02.jpg" alt="Youth Enterprise Fund beneficiary campaign">
+          <div class="card-body"><span class="tag pink">Campaign Design</span><h3>Youth Empower Fund</h3><p>Digital campaign content</p></div>
+        </article>
+        <article class="work-card">
+          <img src="assets/Screenshot (82).png" alt="Banking campaign design">
+          <div class="card-body"><span class="tag blue">Social Media</span><h3>Banking Campaign</h3><p>Platform-ready visuals</p></div>
+        </article>
+        <article class="work-card">
+          <video src="assets/danger animation.mp4" muted loop playsinline controls></video>
+          <div class="card-body"><span class="tag amber">Motion</span><h3>Safety Awareness</h3><p>Animated public message</p></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="professional">
+      <p class="eyebrow">My Expertise</p>
+      <h2>Professional Skills<span class="dot">.</span></h2>
+      <p class="lead">I combine creative vision with technical expertise to deliver multimedia solutions across campaigns, motion, and digital storytelling.</p>
+
+      <div class="skills-layout">
+        <div class="panel">
+          <h3 class="panel-title">Software</h3>
+          <div class="software-list">
+            <div class="skill-card"><div class="app-icon">Pr</div><div><strong>Premiere Pro</strong><div class="bar"><span style="width:68%"></span></div></div><strong>68%</strong></div>
+            <div class="skill-card"><div class="app-icon">Ae</div><div><strong>After Effects</strong><div class="bar"><span style="width:72%"></span></div></div><strong>72%</strong></div>
+            <div class="skill-card"><div class="app-icon">Ps</div><div><strong>Photoshop</strong><div class="bar"><span style="width:74%"></span></div></div><strong>74%</strong></div>
+            <div class="skill-card"><div class="app-icon">Ai</div><div><strong>Illustrator</strong><div class="bar"><span style="width:70%"></span></div></div><strong>70%</strong></div>
+            <div class="skill-card"><div class="app-icon">Id</div><div><strong>InDesign</strong><div class="bar"><span style="width:64%"></span></div></div><strong>64%</strong></div>
+            <div class="skill-card"><div class="app-icon">M</div><div><strong>Autodesk Maya</strong><div class="bar"><span style="width:55%"></span></div></div><strong>55%</strong></div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <h3 class="panel-title">Creative Workflow</h3>
+          <div class="workflow">
+            <div class="step"><strong>01</strong><span>Strategy</span></div>
+            <div class="step"><strong>02</strong><span>Shoot</span></div>
+            <div class="step"><strong>03</strong><span>Edit</span></div>
+            <div class="step"><strong>04</strong><span>Motion</span></div>
+            <div class="step"><strong>05</strong><span>Publish</span></div>
+          </div>
+          <div class="editor-panel">
+            <div class="editor-thumbs">
+              <img src="assets/1-5-05.jpg" alt="Video edit thumbnail">
+              <img src="assets/462541273_1442291376717498_4204398762245221144_n.jpg" alt="Shoot thumbnail">
+              <img src="assets/stand a chance-01.jpg" alt="Campaign thumbnail">
+              <img src="assets/Screenshot (83).png" alt="Design thumbnail">
+              <img src="assets/nmc revised advert-01.jpg" alt="Design thumbnail">
+            </div>
+            <div class="wave" aria-hidden="true"></div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <h3 class="panel-title">Core Strengths</h3>
+          <div class="strength-list">
+            <div class="strength"><div class="mini-icon">VE</div><div><h3>Video Editing</h3><p>Clean edits that communicate clearly.</p></div></div>
+            <div class="strength"><div class="mini-icon">MG</div><div><h3>Motion Graphics</h3><p>Dynamic visuals for campaigns and stories.</p></div></div>
+            <div class="strength"><div class="mini-icon">CD</div><div><h3>Campaign Design</h3><p>Impactful visuals for public and brand campaigns.</p></div></div>
+            <div class="strength"><div class="mini-icon">PH</div><div><h3>Photography</h3><p>Compelling moments captured with purpose.</p></div></div>
+            <div class="strength"><div class="mini-icon">SM</div><div><h3>Social Media Content</h3><p>Platform-ready content that drives engagement.</p></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="experience">
+      <p class="eyebrow">Career Journey</p>
+      <h2>Experience<span class="dot">.</span></h2>
+      <p class="lead">A timeline of impact across multimedia campaigns, marketing support, visual storytelling, and content production.</p>
+
+      <div class="experience-layout">
+        <div class="journey">
+          <article class="experience-card">
+            <div><div class="year">2024</div><p>Jan - Dec</p></div>
+            <div>
+              <h3>The Fridge Factory</h3>
+              <div class="role">Multimedia Specialist / Marketing</div>
+              <p>Created multimedia campaigns and digital content that supported product visibility, launches, and customer engagement.</p>
+              <div class="chips"><span class="chip">Campaign Design</span><span class="chip">Video Production</span><span class="chip">Social Media</span><span class="chip">Brand Content</span></div>
+            </div>
+          </article>
+
+          <article class="experience-card">
+            <div><div class="year">2023-2024</div><p>Jun 2023 - May 2024</p></div>
+            <div>
+              <h3>Youth Enterprise Fund</h3>
+              <div class="role">Marketing & Comms Assistant</div>
+              <p>Supported marketing initiatives, stakeholder communications, and content creation for youth entrepreneurship programmes.</p>
+              <div class="chips"><span class="chip">Content Creation</span><span class="chip">Campaign Support</span><span class="chip">Event Coverage</span><span class="chip">Digital Outreach</span></div>
+            </div>
+          </article>
+
+          <article class="experience-card">
+            <div><div class="year">2023</div><p>Jan - May</p></div>
+            <div>
+              <h3>Royal Eswatini Sugar Corporation</h3>
+              <div class="role">Multimedia Intern</div>
+              <p>Created internal communications and digital content while gaining hands-on production experience in a corporate brand environment.</p>
+              <div class="chips"><span class="chip">Graphic Design</span><span class="chip">Video Editing</span><span class="chip">Internal Comms</span><span class="chip">Brand Support</span></div>
+            </div>
+          </article>
+        </div>
+
+        <aside class="panel">
+          <h3 class="panel-title">Impact at a Glance</h3>
+          <div class="impact-grid">
+            <div class="impact"><strong>50+</strong><span>Campaigns delivered</span></div>
+            <div class="impact"><strong>30+</strong><span>Video shoots & edits</span></div>
+            <div class="impact"><strong>200+</strong><span>Social assets created</span></div>
+            <div class="impact"><strong>25+</strong><span>Brand projects supported</span></div>
+          </div>
+          <h3 class="panel-title" style="margin-top:28px">Tools & Deliverables</h3>
+          <div class="deliverables">
+            <span>Posters</span><span>Website Updates</span><span>Videography</span><span>Brand Content</span><span>Animations</span><span>Digital Campaigns</span><span>Social Media</span><span>Event Coverage</span>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section" id="portfolio">
+      <div class="portfolio-layout">
+        <aside class="portfolio-side">
+          <p class="eyebrow">Portfolio</p>
+          <h2>Multimedia Portfolio<span class="dot">.</span></h2>
+          <p class="lead">A curated collection of multimedia projects spanning video, motion, campaigns, photography, and branding.</p>
+          <div class="filter-stack" aria-label="Project filters">
+            <button class="filter active" type="button" data-filter="all">All <span>12</span></button>
+            <button class="filter" type="button" data-filter="video">Video <span>3</span></button>
+            <button class="filter" type="button" data-filter="campaign">Campaign <span>4</span></button>
+            <button class="filter" type="button" data-filter="motion">Motion <span>2</span></button>
+            <button class="filter" type="button" data-filter="social">Social Media <span>3</span></button>
+          </div>
+          <div class="panel">
+            <h3>Have a project in mind?</h3>
+            <p>Let's create something impactful together.</p>
+            <a class="ghost-btn" href="#contact">Get in Touch</a>
+          </div>
+        </aside>
+
+        <div class="project-grid">
+          <article class="project-card featured" data-category="video">
+            <video src="assets/golf ad.mp4" controls playsinline poster="assets/1-5-05.jpg"></video>
+            <div class="card-body"><div><span class="tag">Featured Video</span><h3>The Perfect Drive</h3><p>Promotional video campaign</p></div><a class="ghost-btn" href="#contact">View Project</a></div>
+          </article>
+          <article class="project-card" data-category="campaign"><img src="assets/Beneficiary Posts -01.jpg" alt="Beneficiary campaign design"><div class="card-body"><span class="tag pink">Campaign Design</span><h3>Beneficiary Story</h3><p>Youth Enterprise Fund</p></div></article>
+          <article class="project-card" data-category="social"><img src="assets/Screenshot (82).png" alt="Bank campaign design"><div class="card-body"><span class="tag blue">Social Media</span><h3>Banking Solutions</h3><p>Digital campaign asset</p></div></article>
+          <article class="project-card" data-category="motion"><video src="assets/danger animation.mp4" muted loop playsinline controls></video><div class="card-body"><span class="tag amber">Motion</span><h3>Stranger Danger</h3><p>Awareness animation</p></div></article>
+          <article class="project-card" data-category="campaign"><img src="assets/nmc revised advert-01.jpg" alt="Breast cancer awareness design"><div class="card-body"><span class="tag pink">Campaign Design</span><h3>Breast Cancer Awareness</h3><p>Public awareness month</p></div></article>
+          <article class="project-card" data-category="video"><video src="assets/2.mp4" muted loop playsinline controls></video><div class="card-body"><span class="tag">Video</span><h3>Product Showcase</h3><p>Fridge Factory content</p></div></article>
+          <article class="project-card" data-category="campaign"><img src="assets/stand a chance-01.jpg" alt="Stand a chance campaign"><div class="card-body"><span class="tag pink">Campaign Design</span><h3>Stand a Chance</h3><p>Promotional poster</p></div></article>
+          <article class="project-card" data-category="social"><img src="assets/462747793_1445611879718781_506806160930600390_n.jpg" alt="Social media creative"><div class="card-body"><span class="tag blue">Social Media</span><h3>Content Series</h3><p>Visual storytelling</p></div></article>
+          <article class="project-card" data-category="campaign"><img src="assets/Beneficiary Posts -02.jpg" alt="Beneficiary campaign post"><div class="card-body"><span class="tag pink">Campaign Design</span><h3>Funding Opportunity</h3><p>Youth campaign design</p></div></article>
+          <article class="project-card" data-category="social"><img src="assets/Screenshot (40).png" alt="Awareness social graphic"><div class="card-body"><span class="tag blue">Social Media</span><h3>Health Awareness</h3><p>Educational content</p></div></article>
+          <article class="project-card" data-category="motion"><video src="assets/2.mp4" muted loop playsinline controls></video><div class="card-body"><span class="tag amber">Motion</span><h3>Product Motion</h3><p>Animated product content</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <p class="eyebrow">Let's Create Something Impactful</p>
+      <h2>Contact<span class="dot">.</span></h2>
+      <p class="lead">I am open to new opportunities, collaborations, and creative challenges. Let's bring your ideas to life through multimedia, storytelling, and design.</p>
+
+      <div class="contact-layout">
+        <aside class="panel">
+          <h3 class="panel-title">Recent Work</h3>
+          <div class="recent-list">
+            <div class="recent-item"><video src="assets/golf ad.mp4" muted playsinline></video><div><span class="tag">Video</span><strong>The Perfect Drive</strong></div></div>
+            <div class="recent-item"><img src="assets/nmc revised advert-01.jpg" alt="Breast cancer campaign"><div><span class="tag pink">Campaign</span><strong>Breast Cancer Awareness</strong></div></div>
+            <div class="recent-item"><img src="assets/Screenshot (82).png" alt="Banking campaign"><div><span class="tag blue">Social</span><strong>Eswatini Bank Campaign</strong></div></div>
+          </div>
+        </aside>
+
+        <form class="contact-form panel">
+          <div class="form-grid">
+            <label>Name<input type="text" name="name" placeholder="Your full name"></label>
+            <label>Email<input type="email" name="email" placeholder="your.email@example.com"></label>
+            <label class="wide">Project Type<select name="project"><option>Select project type</option><option>Video campaign</option><option>Motion graphics</option><option>Campaign design</option><option>Photography</option><option>Brand content</option></select></label>
+            <label class="wide">Message<textarea name="message" placeholder="Tell me about your project, goals, and how I can help..."></textarea></label>
+          </div>
+          <div class="actions">
+            <button class="send-btn" type="button">Send Message</button>
+          </div>
+        </form>
+
+        <div class="contact-stack">
+          <div class="contact-card"><small>Email</small><strong>dlaminivv123@gmail.com</strong></div>
+          <div class="contact-card"><small>Phone</small><strong>7996 7594 / 7647 3882</strong></div>
+          <div class="contact-card"><small>Location</small><strong>Eswatini</strong></div>
+          <div class="contact-card"><small>Availability</small><strong>Available for freelance & collaborations</strong></div>
+        </div>
+
+        <div class="portrait-panel">
+          <img src="assets/453193937_1390924011854235_653796019249629945_n.jpg" alt="Lwazi Vivian Dlamini portrait">
+          <div class="audio-mini">
+            <div class="tag">Brand Anthem</div>
+            <div class="wave" aria-hidden="true"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="footer-cta">
+    <div>
+      <p class="eyebrow">Have a project in mind?</p>
+      <h3>Let's create something people will remember.</h3>
+      <p>Campaigns, social content, video edits, motion graphics, and brand visuals.</p>
+    </div>
+    <a class="primary-btn" href="#contact">Let's Work Together</a>
+  </div>
+
+  <footer class="site-footer">
+    Lwazi Vivian Dlamini. Multimedia portfolio.
+  </footer>
+
+  <script>
+    const menuButton = document.querySelector(".menu-toggle");
+    const navLinks = document.querySelector("#navLinks");
+
+    menuButton.addEventListener("click", () => {
+      const isOpen = navLinks.classList.toggle("open");
+      menuButton.setAttribute("aria-expanded", String(isOpen));
+    });
+
+    document.querySelectorAll(".filter").forEach((button) => {
+      button.addEventListener("click", () => {
+        document.querySelectorAll(".filter").forEach((item) => item.classList.remove("active"));
+        button.classList.add("active");
+
+        const filter = button.dataset.filter;
+        document.querySelectorAll(".project-card").forEach((card) => {
+          const visible = filter === "all" || card.dataset.category === filter;
+          card.style.display = visible ? "" : "none";
+        });
+      });
+    });
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+
