@@ -926,6 +926,101 @@
       gap: 18px;
     }
 
+    .website-development {
+      display: grid;
+      grid-template-columns: minmax(0, 1.18fr) minmax(340px, 0.82fr);
+      gap: 30px;
+      align-items: center;
+    }
+
+    .laptop-mockup {
+      position: relative;
+      padding: 18px 18px 38px;
+      border: 1px solid rgba(255,255,255,0.16);
+      border-radius: 22px 22px 12px 12px;
+      background: linear-gradient(145deg, #151922, #07080c 72%);
+      box-shadow: var(--shadow);
+    }
+
+    .laptop-mockup::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: 12px;
+      width: 110px;
+      height: 5px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.22);
+      transform: translateX(-50%);
+    }
+
+    .laptop-screen {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.16);
+      border-radius: 12px;
+      background: #fff;
+      aspect-ratio: 16 / 10;
+    }
+
+    .laptop-screen img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+    }
+
+    .laptop-base {
+      width: 76%;
+      height: 22px;
+      margin: 0 auto;
+      border-radius: 0 0 28px 28px;
+      background: linear-gradient(180deg, #222733, #07080c);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-top: 0;
+      box-shadow: 0 18px 44px rgba(0,0,0,0.4);
+    }
+
+    .website-card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 28px;
+      background: var(--panel-strong);
+      box-shadow: 0 18px 44px rgba(0,0,0,0.2);
+    }
+
+    .website-card h3 {
+      margin-bottom: 10px;
+      font-size: 30px;
+      line-height: 1.15;
+    }
+
+    .website-card p {
+      color: var(--muted);
+    }
+
+    .website-features {
+      display: grid;
+      gap: 10px;
+      margin: 20px 0 24px;
+      padding: 0;
+      list-style: none;
+    }
+
+    .website-features li {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 12px 14px;
+      background: rgba(255,255,255,0.035);
+      color: #d9e0de;
+    }
+
+    .website-link {
+      color: var(--green);
+      font-weight: 900;
+      overflow-wrap: anywhere;
+    }
+
     .contact-layout {
       display: grid;
       grid-template-columns: 260px minmax(420px, 1fr) 360px 360px;
@@ -1085,6 +1180,7 @@
       .skills-layout,
       .experience-layout,
       .portfolio-layout,
+      .website-development,
       .contact-layout {
         grid-template-columns: 1fr;
       }
@@ -1216,6 +1312,7 @@
         <a href="#professional">Professional</a>
         <a href="#experience">Experience</a>
         <a href="#portfolio">Portfolio</a>
+        <a href="#website-development">Web Development</a>
         <a href="#contact">Contact</a>
       </div>
       <a class="cta" href="#contact">Let's Work Together</a>
@@ -1435,6 +1532,39 @@
       </div>
     </section>
 
+    <section class="section" id="website-development">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Website Development</p>
+          <h2>Website Development<span class="dot">.</span></h2>
+        </div>
+        <a class="ghost-btn" href="https://safepro-gules.vercel.app/" target="_blank" rel="noopener">Visit Website</a>
+      </div>
+
+      <div class="website-development">
+        <div>
+          <div class="laptop-mockup" aria-label="SafePro website displayed in laptop mockup">
+            <div class="laptop-screen">
+              <img src="assets/safepro-website.png" alt="SafePro website homepage preview">
+            </div>
+          </div>
+          <div class="laptop-base" aria-hidden="true"></div>
+        </div>
+
+        <article class="website-card">
+          <span class="tag">Live Website</span>
+          <h3>SafePro Pest Control & Compliance Website</h3>
+          <p>SafePro is a professional service website built to present pest control, sanitation, hygiene, and compliance support in a clear and trustworthy way. The design uses strong service messaging, clean navigation, and direct inspection calls-to-action to help visitors understand the offer quickly.</p>
+          <ul class="website-features">
+            <li>Responsive homepage with clear service positioning.</li>
+            <li>Structured navigation for services, industries, resources, FAQs, and contact.</li>
+            <li>Strong visual branding with green safety-focused styling and inspection call-to-action buttons.</li>
+          </ul>
+          <a class="website-link" href="https://safepro-gules.vercel.app/" target="_blank" rel="noopener">https://safepro-gules.vercel.app/</a>
+        </article>
+      </div>
+    </section>
+
     <section class="section" id="contact">
       <p class="eyebrow">Let's Create Something Impactful</p>
       <h2>Contact<span class="dot">.</span></h2>
@@ -1569,6 +1699,8 @@
   </script>
 </body>
 </html>
+
+
 
 
 
