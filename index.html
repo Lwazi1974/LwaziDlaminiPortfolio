@@ -926,6 +926,73 @@
       gap: 18px;
     }
 
+    .three-d-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+    }
+
+    .three-d-card {
+      position: relative;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--panel-strong);
+      overflow: hidden;
+      box-shadow: 0 18px 44px rgba(0,0,0,0.2);
+    }
+
+    .three-d-card img {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      cursor: zoom-in;
+      transition: transform 180ms ease, filter 180ms ease;
+    }
+
+    .three-d-card:hover img {
+      transform: scale(1.025);
+      filter: brightness(0.82);
+    }
+
+    .three-d-card::after {
+      content: "View full render";
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      z-index: 1;
+      padding: 7px 10px;
+      border: 1px solid rgba(0, 227, 109, 0.55);
+      border-radius: 999px;
+      background: rgba(5, 6, 9, 0.78);
+      color: var(--green);
+      font-size: 11px;
+      font-weight: 900;
+      text-transform: uppercase;
+      opacity: 0;
+      transform: translateY(-4px);
+      transition: opacity 180ms ease, transform 180ms ease;
+      pointer-events: none;
+    }
+
+    .three-d-card:hover::after {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .three-d-meta {
+      padding: 22px;
+    }
+
+    .three-d-meta h3 {
+      margin-bottom: 8px;
+      font-size: 24px;
+    }
+
+    .three-d-meta p {
+      color: var(--muted);
+      margin-bottom: 0;
+    }
+
     .website-development {
       display: grid;
       grid-template-columns: minmax(0, 1.18fr) minmax(340px, 0.82fr);
@@ -1254,6 +1321,7 @@
       .stats,
       .work-row,
       .project-grid,
+      .three-d-grid,
       .workflow,
       .filter-stack,
       .contact-layout,
@@ -1316,6 +1384,7 @@
         <a href="#professional">Professional</a>
         <a href="#experience">Experience</a>
         <a href="#portfolio">Portfolio</a>
+        <a href="#three-d-projects">3D Projects</a>
         <a href="#website-development">Web Development</a>
         <a href="#contact">Contact</a>
       </div>
@@ -1536,6 +1605,36 @@
       </div>
     </section>
 
+    <section class="section" id="three-d-projects">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">School Projects</p>
+          <h2>3D Projects<span class="dot">.</span></h2>
+        </div>
+        <p>Selected school-based 3D modelling and architectural visualization projects, showing exterior structure, lighting, material exploration, and rendered presentation.</p>
+      </div>
+
+      <div class="three-d-grid">
+        <article class="three-d-card">
+          <img src="assets/3d-commercial-building.jpg" alt="3D commercial building render">
+          <div class="three-d-meta">
+            <span class="tag">3D Modelling</span>
+            <h3>Commercial Building Concept</h3>
+            <p>A school project render exploring a modern commercial structure with branded storefront details, signage, lighting, glass surfaces, and exterior presentation.</p>
+          </div>
+        </article>
+
+        <article class="three-d-card">
+          <img src="assets/3d-residential-house.jpg" alt="3D residential house render">
+          <div class="three-d-meta">
+            <span class="tag amber">Architectural Visualization</span>
+            <h3>Residential House Render</h3>
+            <p>A school project focused on residential exterior modelling, night lighting, columns, garage details, landscaping, and realistic architectural atmosphere.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
     <section class="section" id="website-development">
       <div class="section-head">
         <div>
@@ -1685,7 +1784,7 @@
     const lightboxCaption = lightbox.querySelector(".lightbox-caption");
     const lightboxClose = lightbox.querySelector(".lightbox-close");
 
-    document.querySelectorAll("#portfolio .project-card img").forEach((image) => {
+    document.querySelectorAll("#portfolio .project-card img, #three-d-projects .three-d-card img").forEach((image) => {
       image.setAttribute("tabindex", "0");
       image.setAttribute("role", "button");
       image.setAttribute("aria-label", `View full image: ${image.alt || "portfolio image"}`);
@@ -1726,6 +1825,7 @@
   </script>
 </body>
 </html>
+
 
 
 
